@@ -1,13 +1,13 @@
-# Neewer GL-1
+# Neewer GL1
 
-This script allows you to interact with a Neewer GL-1 LED panel over your network. You must configure the panel to connect to your wifi network for this script to work.
+This script allows you to interact with a Neewer GL1 LED panel over your network. You must configure the panel to connect to your wifi network for this script to work.
+
+The Neewer GL1 is a lower cost alternative to an El Gato Key Light. It supports Wifi (configured via mobile app). I reverse engineered the protocol between my computer and the light and found that the light listens for commands over UDP on port 5052. As far as I could tell, the light does not return any data such as current state.
+
+By being able to control the light using a script, you can integrate controls with something like a Stream Deck, which is how I use it.
 
 
 ## Protocol
-
-I reverse engineered the protocol between my computer and the light. 
-
-For communication, the light listens UDP port 5052. 
 
 To turn on the light, you send the hexadecimal code `800502010189` over UDP. To turn off the light, you send the hexadecimal code `800502010088` over UDP.
 
@@ -55,3 +55,9 @@ node index.mjs -h 192.168.1.236 -b 10 -t 33
 node index.mjs -h 192.168.1.236 -H 800503020a32c6
 
 ```
+
+## Other Notes
+
+For my uses, the script is feature complete in the sense that I probably won't be updating the script very often, unless my own needs require me to. 
+
+If you need more functionality, feel free to create your own fork.
