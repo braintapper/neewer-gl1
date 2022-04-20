@@ -11,9 +11,9 @@ For communication, the light listens UDP port 5052.
 
 To turn on the light, you send the hexadecimal code `800502010189` over UDP. To turn off the light, you send the hexadecimal code `800502010088` over UDP.
 
-To set the brightness and temperature, you send a hexadecimal code with the pattern "80050302{brightness}{temperature first two digits}{checksum}"
+To set the brightness and temperature, you send a hexadecimal code with the pattern `80050302{brightness}{temperature first two digits}{checksum}`
 
-For example, brightness = 20, temperature = 3300k is "800503021421bf". 
+For example, brightness = 20, temperature = 3300k is `800503021421bf`. 
 
 To break that down further, you have 7 hex pairs: `80 05 03 02 14 21 bf`, where `80 + 05 + 03 + 02 + 14 + 21 = bf`
 
