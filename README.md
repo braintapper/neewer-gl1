@@ -58,6 +58,8 @@ node index.mjs -h 192.168.1.236 -H 800503020a32c6
 
 ## Other Notes
 
+The script seems to work best when the Windows Neewer Live app is installed and running.
+
 For my uses, the script is feature complete in the sense that I probably won't be updating the script very often, unless my own needs require me to. 
 
 If you need more functionality, feel free to create your own fork.
