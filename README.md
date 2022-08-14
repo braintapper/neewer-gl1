@@ -44,10 +44,12 @@ You can generally mix and match the parameters as required, with exceptions:
 ```
 # e.g, light IP address is 192.168.1.236 
 
-# turn light on, your computer IP is 192.168.1.100 and set brightness to 10%, temperature to 3300k, delay between light commands is 500ms
+# turn light on, your computer IP is 192.168.1.100 and set brightness to 10%, temperature to 3300k, 
+# delay between light commands is 500ms
 node index.mjs -h 192.168.1.236 -p on  -b 10 -t 33 -I 192.168.1.100
 
-# turn light on, your computer IP is 192.168.1.100 and set brightness to 10%, temperature to 3300k, delay between light commands is 400ms
+# turn light on, your computer IP is 192.168.1.100 and set brightness to 10%, temperature to 3300k,
+# delay between light commands is 400ms
 node index.mjs -h 192.168.1.236 -p on  -b 10 -t 33 -I 192.168.1.100 -d 400
 
 # turn light off, script guesses your IP
