@@ -1,6 +1,6 @@
 {
   "name": "neewer-gl1",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,6 +11,7 @@
   "dependencies": {
     "chalk": "^5.0.1",
     "commander": "^6.0.0",
+    "dgram-as-promised": "^5.0.1",
     "sugar-and-spice": "0.0.5"
   },
   "devDependencies": {
