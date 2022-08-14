@@ -32,7 +32,7 @@ options = program.opts();
 
 command_queue = [];
 
-command_delay = 600;
+command_delay = 500;
 
 send = async function(host, port) {
   var bytes, client, closed, hexCommand, message;
@@ -41,14 +41,14 @@ send = async function(host, port) {
     hexCommand = command_queue.shift();
     message = new Buffer.from(hexCommand, "hex");
     bytes = (await client.send(message, 0, message.length, port, host)); //, (err, bytes) ->
-    console.log(`Sent message [${hexCommand}] (${bytes} bytes) to ${host}:${port}`);
+    console.log(chalk.blue(`Sent command [${hexCommand}] (${bytes} bytes) to ${host}:${port}`));
     
     closed = (await client.close());
-    console.log("Connection closed. Going to next in queue.");
+    // console.log "Connection closed. Going to next in queue."
     // prevent commands from being issued too quickly
     return send.delay(command_delay, host, port);
   } else {
-    return console.log("Command queue is empty! Done.");
+    return console.log(chalk.green("Command queue is empty! Done."));
   }
 };
 
@@ -91,10 +91,10 @@ parse_and_execute = async function(options) {
   if (options.host != null) {
     if (options.client_ip != null) {
       ipAddress = options.client_ip;
-      console.log(`Using ${ipAddress} as the local IP address`);
+      console.log(chalk.green(`Using ${ipAddress} as the local IP address`));
     } else {
       ipAddress = guessIp();
-      console.log(`client_ip not provided, using ${ipAddress} as the local IP address`);
+      console.log(chalk.yellow(`client_ip not provided, using ${ipAddress} as the local IP address`));
     }
     if (options.delay != null) {
       command_delay = options.delay;

@@ -35,7 +35,7 @@ options = program.opts()
 
 command_queue = []
 
-command_delay = 600
+command_delay = 500
 
 send = (host, port)->
   
@@ -46,14 +46,14 @@ send = (host, port)->
     message = new Buffer.from(hexCommand,"hex")
     
     bytes = await client.send message, 0, message.length, port, host #, (err, bytes) ->
-    console.log "Sent message [#{hexCommand}] (#{bytes} bytes) to #{host}:#{port}"
+    console.log chalk.blue("Sent command [#{hexCommand}] (#{bytes} bytes) to #{host}:#{port}")
       #
     closed = await client.close()
-    console.log "Connection closed. Going to next in queue."
+    # console.log "Connection closed. Going to next in queue."
     # prevent commands from being issued too quickly
     send.delay command_delay, host,port 
   else
-    console.log "Command queue is empty! Done."
+    console.log chalk.green("Command queue is empty! Done.")
     
 convertIp = (ip)->
   segments = ip.split(".")
@@ -83,10 +83,10 @@ parse_and_execute = (options)->
     
     if options.client_ip?
       ipAddress = options.client_ip
-      console.log "Using #{ipAddress} as the local IP address"
+      console.log chalk.green("Using #{ipAddress} as the local IP address")
     else
       ipAddress = guessIp()
-      console.log "client_ip not provided, using #{ipAddress} as the local IP address"
+      console.log chalk.yellow("client_ip not provided, using #{ipAddress} as the local IP address")
     
     if options.delay?
       command_delay = options.delay
