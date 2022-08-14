@@ -74,7 +74,7 @@ I'm not sure how the Neewer Live app scans the network for the lights, but to co
 
 To reverse engineer the protocol, you can watch traffic between your computer and the light using Wireshark.
 
-You'll notice that there's an initializing handshake between Neewer Live and your light, where it sends a message three times, and then the app sends a short heartbeat message afterwards.
+You'll notice that there's an initializing handshake between Neewer Live and your light, where it sends a message three times, and then the app sends a constant stream of short heartbeat messages afterwards.
 
 The light never sends any information back, so if you change your light settings manually, your light will be out of sync with the app's state for the light.
 
